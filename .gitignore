@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/docs/Le Buzzer.pdf
+/docs/websocket-stomp-course.md
