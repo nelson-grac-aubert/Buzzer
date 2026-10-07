@@ -1,0 +1,32 @@
+/* COMMON TO ALL BUTTONS */
+.button {
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--spacing-8); 
+  padding: var(--spacing-16) var(--spacing-24); 
+  border: none; 
+
+  font-size: var(--font-size-display-s); 
+  line-height: var(--line-height-display);
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+}
+
+.primary {
+  background-color: var(--color-accent);
+  color: var(--color-outline);
+  box-shadow:
+  /* lighter top*/
+  inset 0 4px 0 0 var(--color-accent-light),
+  /* dark shadow bottom */
+  inset 0 -4px 0 0 var(--color-accent-dark), 
+  /* thicker border bottom*/
+  0 4px 0 4px var(--color-outline), 
+  /* black outline */ 
+  0 0 0 4px var(--color-outline); 
+}
+

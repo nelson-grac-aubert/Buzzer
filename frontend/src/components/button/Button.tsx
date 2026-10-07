@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import styles from "./Button.module.css"
 
 type ButtonProps = {
   variant?: 'primary' | 'secondary'
@@ -7,9 +8,13 @@ type ButtonProps = {
   disabled?: boolean
 }
 
-function Button({ children, onClick, disabled }: ButtonProps) {
+function Button({ variant= 'primary', children, onClick, disabled }: ButtonProps) {
   return (
-    <button type="button" onClick={onClick} disabled={disabled}>
+    <button 
+      type="button" 
+      className={`${styles.button} ${styles[variant]}`}
+      onClick={onClick} 
+      disabled={disabled}>
       {children}
     </button>
   )
