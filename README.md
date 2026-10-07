@@ -32,25 +32,3 @@ flowchart TD
         I -->|partie terminée| J["Fin<br/>classement final"]
     end
 ```
-
-## Écrans
-
-| Route | Écran | Affiche | Actions possibles |
-|---|---|---|---|
-| `/` | Accueil | champ nom, choix du quiz, champ code | Créer une partie · Rejoindre |
-| `/host/:code` | Salle d'attente | le code, la liste des joueurs en direct | Lancer la question |
-| `/host/:code` | Question en cours | la question, les propositions, le décompte, X / N réponses reçues | Clore la question |
-| `/host/:code` | Résultats | la bonne réponse, le classement | Question suivante · Terminer |
-| `/play/:code` | Salle d'attente | « en attente de la question » | aucune |
-| `/play/:code` | Question | les propositions, le décompte | Répondre (une seule fois, boutons désactivés ensuite) |
-| `/play/:code` | Résultat | juste ou faux, sa place au classement | aucune |
-| `/host/:code` et `/play/:code` | Fin | le classement final | aucune |
-
-## Règles pour le front
-
-- Un indicateur **connecté / déconnecté** visible sur tous les écrans de jeu.
-- Reconnexion automatique avec **backoff exponentiel**, et récupération de l'état complet une fois reconnecté.
-- Toute la logique de connexion dans un **hook ou un service dédié**, jamais dans les composants.
-- **Désabonnement** au démontage de chaque composant abonné.
-- TypeScript `strict: true`, aucun `any`.
-- Les routes ne font qu'afficher : c'est le serveur qui accepte ou refuse chaque action.
