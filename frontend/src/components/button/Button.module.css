@@ -30,3 +30,17 @@
   0 0 0 4px var(--color-outline); 
 }
 
+.secondary {
+  background-color: var(--color-background-panel);
+  color: var(--color-text-primary);
+  box-shadow:
+  /* lighter top*/
+  inset 0 4px 0 0 var(--color-background-panel-light),
+  /* dark shadow bottom */
+  inset 0 -4px 0 0 var(--color-background-panel-dark), 
+  /* thicker border bottom*/
+  0 4px 0 4px var(--color-outline), 
+  /* black outline */ 
+  0 0 0 4px var(--color-outline); 
+}
+
