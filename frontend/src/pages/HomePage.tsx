@@ -21,8 +21,4 @@ function HomePage() {
 }
 
 export default HomePage;
-// TODO 2: HomePage function returning the structure from the table above:
-//   main > h1, then 2 sections, each with h2 + p + Button
-//   no onClick yet
 
-// TODO 3: default export
