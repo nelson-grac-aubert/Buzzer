@@ -1,5 +1,7 @@
+import DevPage from "./pages/DevPage"
+
 function App() {
-  return <h1>Hello, World!</h1>
+  return <DevPage />
 }
 
 export default App
