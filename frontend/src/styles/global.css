@@ -1,0 +1,19 @@
+/* all sizes include margin and padding */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin : 0; 
+    background-color: var(--color-background-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-family);
+    font-size: var(--font-size-text-m);
+    line-height: var(--line-height-text);
+}
+
+/* remove default style from browser */
+button, input {
+    font: inherit;
+    color: inherit;
+}
