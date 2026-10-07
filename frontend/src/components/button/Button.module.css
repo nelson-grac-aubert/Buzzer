@@ -27,20 +27,61 @@
   /* thicker border bottom*/
   0 4px 0 4px var(--color-outline), 
   /* black outline */ 
-  0 0 0 4px var(--color-outline); 
+  0 0 0 4px var(--color-outline);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-accent-light);
+  box-shadow:
+  inset 0 4px 0 0 var(--color-text-primary),
+  inset 0 -4px 0 0 var(--color-accent-dark),
+  0 4px 0 4px var(--color-outline),
+  0 0 0 4px var(--color-outline);
 }
 
 .secondary {
   background-color: var(--color-background-panel);
   color: var(--color-text-primary);
   box-shadow:
-  /* lighter top*/
   inset 0 4px 0 0 var(--color-background-panel-light),
-  /* dark shadow bottom */
-  inset 0 -4px 0 0 var(--color-background-panel-dark), 
-  /* thicker border bottom*/
-  0 4px 0 4px var(--color-outline), 
-  /* black outline */ 
-  0 0 0 4px var(--color-outline); 
+  inset 0 -4px 0 0 var(--color-background-panel-dark),
+  0 4px 0 4px var(--color-outline),
+  0 0 0 4px var(--color-outline);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-background-panel-light);
+  box-shadow:
+  inset 0 4px 0 0 var(--color-text-primary),
+  inset 0 -4px 0 0 var(--color-background-panel-dark),
+  0 4px 0 4px var(--color-outline),
+  0 0 0 4px var(--color-outline);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--color-accent-dark);
+  box-shadow:
+  inset 0 4px 0 0 var(--color-outline),
+  0 0 0 4px var(--color-outline);
+}
+
+.secondary:active:not(:disabled) {
+  background-color: var(--color-background-panel-dark);
+  box-shadow:
+  inset 0 4px 0 0 var(--color-outline),
+  0 0 0 4px var(--color-outline);
+}
+
+.button:disabled {
+  background-color: var(--color-muted);
+  color: color-mix(in srgb, var(--color-text-primary) 30%, transparent);
+
+  box-shadow:
+  inset 0 4px 0 0 var(--color-muted-light),
+  inset 0 -4px 0 0 var(--color-muted-dark),
+  0 0 0 4px var(--color-outline);
+
+  cursor:not-allowed;
+
 }
 
