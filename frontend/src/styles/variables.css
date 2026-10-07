@@ -1,0 +1,66 @@
+:root {
+  /* COLORS 
+  backgrounds */
+  --color-background-base: #14163a;
+  --color-background-panel: #2b2f77;
+  --color-background-panel-light: #4a50a8;
+  --color-background-panel-dark: #1b1e52;
+
+  /* text and outline */
+  --color-text-primary: #f4f1e8;
+  --color-outline: #0b0b1e;
+
+  /* accent */
+  --color-accent: #ff9f1c;
+  --color-accent-light: #ffc266;
+  --color-accent-dark: #c46a00;
+
+  /* answers */
+  --color-answer-a: #e8505b;
+  --color-answer-a-light: #f2858c;
+  --color-answer-a-dark: #a82e37;
+  --color-answer-b: #3fa7f5;
+  --color-answer-b-light: #86c8f9;
+  --color-answer-b-dark: #1f6fb0;
+  --color-answer-c: #f7c548;
+  --color-answer-c-light: #fadd8a;
+  --color-answer-c-dark: #b88a1c;
+  --color-answer-d: #4cc26b;
+  --color-answer-d-light: #85d79c;
+  --color-answer-d-dark: #2a8a45;
+
+  /* muted */
+  --color-muted: #555878;
+  --color-muted-light: #75789a;
+  --color-muted-dark: #3a3c57;
+
+  /* feedback, aliases of other colors */
+  --color-feedback-error: var(--color-answer-a);
+  --color-feedback-success: var(--color-answer-d);
+  --color-feedback-warning: var(--color-accent);
+
+  /* LAYOUT
+  spacings */
+  --spacing-4: 0.25rem;
+  --spacing-8: 0.5rem;
+  --spacing-12: 0.75rem;
+  --spacing-16: 1rem;
+  --spacing-24: 1.5rem;
+  --spacing-32: 2rem;
+
+  /* borders */
+  --border-width: 4px;
+
+  /* TYPOGRAPHY */
+  --font-family: 'Press Start 2P', monospace;
+
+  --font-size-display-xl: 6rem;
+  --font-size-display-l: 4rem;
+  --font-size-display-m: 1.5rem;
+  --font-size-display-s: 1rem;
+  --line-height-display: 1;
+
+  --font-size-text-l: 2.5rem;
+  --font-size-text-m: 1rem;
+  --line-height-text: 1.5;
+}
