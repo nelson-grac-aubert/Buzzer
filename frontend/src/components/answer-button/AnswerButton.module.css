@@ -1,0 +1,137 @@
+/* Options and states only change local variables (--answer-*),
+   this shared rule uses them */
+.answer {
+  --answer-ring: var(--color-outline);
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  width: 100%;
+  padding: var(--spacing-12) var(--spacing-16) var(--spacing-12) var(--spacing-12);
+  border: none;
+
+  background-color: var(--answer-color);
+  color: var(--color-outline);
+  text-align: left;
+  cursor: pointer;
+
+  /* the first shadow is drawn on top: the ring must come before the thick bottom */
+  box-shadow:
+  inset 0 4px 0 0 var(--answer-light),
+  inset 0 -4px 0 0 var(--answer-dark),
+  0 0 0 4px var(--answer-ring),
+  0 4px 0 4px var(--color-outline);
+}
+
+.answer:disabled {
+  cursor: default;
+}
+
+/* options */
+.a {
+  --answer-color: var(--color-answer-a);
+  --answer-light: var(--color-answer-a-light);
+  --answer-dark: var(--color-answer-a-dark);
+}
+
+.b {
+  --answer-color: var(--color-answer-b);
+  --answer-light: var(--color-answer-b-light);
+  --answer-dark: var(--color-answer-b-dark);
+}
+
+.c {
+  --answer-color: var(--color-answer-c);
+  --answer-light: var(--color-answer-c-light);
+  --answer-dark: var(--color-answer-c-dark);
+}
+
+.d {
+  --answer-color: var(--color-answer-d);
+  --answer-light: var(--color-answer-d-light);
+  --answer-dark: var(--color-answer-d-dark);
+}
+
+/* states: written after the options, so they win when both set the same variable */
+.selected {
+  --answer-ring: var(--color-text-primary);
+}
+
+.validated {
+  background-color: var(--answer-dark);
+  box-shadow:
+  inset 0 4px 0 0 var(--color-outline),
+  0 0 0 4px var(--color-outline);
+}
+
+.correct {
+  --answer-color: var(--color-feedback-success);
+  --answer-light: var(--color-answer-d-light);
+  --answer-dark: var(--color-answer-d-dark);
+  --answer-ring: var(--color-text-primary);
+}
+
+.wrong {
+  --answer-color: var(--color-feedback-error);
+  --answer-light: var(--color-answer-a-light);
+  --answer-dark: var(--color-answer-a-dark);
+}
+
+.dimmed {
+  --answer-color: var(--color-muted);
+  --answer-light: var(--color-muted-light);
+  --answer-dark: var(--color-muted-dark);
+  box-shadow:
+  inset 0 4px 0 0 var(--answer-light),
+  inset 0 -4px 0 0 var(--answer-dark),
+  0 0 0 4px var(--color-outline);
+}
+
+/* inner parts */
+.badge {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  background-color: var(--color-outline);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-display-s);
+  line-height: var(--line-height-display);
+  text-transform: uppercase;
+}
+
+.dimmed .badge {
+  background-color: var(--color-muted-dark);
+}
+
+.label {
+  flex: 1;
+  font-size: var(--font-size-text-m);
+  line-height: var(--line-height-text);
+}
+
+.dimmed .label {
+  color: color-mix(in srgb, var(--color-text-primary) 50%, transparent);
+}
+
+/* px, not rem: it must stay aligned with the 24px pixel icons */
+.indicator {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.empty {
+  border: var(--border-width) solid var(--color-outline);
+}
+
+.filled {
+  background-color: var(--color-outline);
+  color: var(--color-text-primary);
+}
