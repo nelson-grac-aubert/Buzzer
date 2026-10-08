@@ -3,12 +3,15 @@ import CheckIcon from '../components/icons/CheckIcon'
 import CrossIcon from '../components/icons/CrossIcon'
 import AnswerButton from '../components/answer-button/AnswerButton'
 import type { AnswerOption, AnswerState } from '../components/answer-button/AnswerButton'
+import TextInput from '../components/text-input/TextInput'
+import { useState } from 'react'
 
 const answerOptions: AnswerOption[] = ['a', 'b', 'c', 'd']
 const answerStates: AnswerState[] = ['default', 'selected', 'validated', 'correct', 'wrong', 'dimmed']
-const answerLabels: Record<AnswerOption, string> = { a: 'Paris', b: 'Lyon', c: 'Marseille', d: 'Toulouse' }
 
 function DevPage() {
+  const [username, setUserName] = useState("")
+  
   return (
     <main>
       <h1>Test des composants</h1>
@@ -28,23 +31,19 @@ function DevPage() {
 
       <section>
         <h2>AnswerButton</h2>
-        {answerStates.map((state) => (
-          <div key={state}>
-            <h3>{state}</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 342px)', gap: 'var(--spacing-24)', padding: 'var(--spacing-8)' }}>
-              {answerOptions.map((option) => (
-                <AnswerButton
-                  key={option}
-                  option={option}
-                  state={state}
-                  onClick={() => console.log(`clicked answer ${option}`)}
-                >
-                  {answerLabels[option]}
-                </AnswerButton>
-              ))}
-            </div>
-          </div>
-        ))}
+        {answerStates.map((state) =>
+          answerOptions.map((option) => (
+            <AnswerButton key={`${state}-${option}`} option={option} state={state}>
+              {state}
+            </AnswerButton>
+          ))
+        )}
+      </section>
+
+      <section>
+        <h2>TextInput</h2>
+        <TextInput label="Pseudo" value={username} onChange={setUserName} hint="20 caractères maximum" maxLength={20} />
+        <TextInput label="Pseudo" value={username} onChange={setUserName} error="Ce pseudo est déjà pris" maxLength={20} />
       </section>
     </main>
   )
