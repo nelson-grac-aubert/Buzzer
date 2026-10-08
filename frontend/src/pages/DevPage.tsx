@@ -42,9 +42,7 @@ function DevPage() {
 
       <section>
         <h2>TextInput</h2>
-        <TextInput label="Pseudo" value={username} onChange={setUserName} hint="20 caractères maximum" maxLength={20} />
-        <TextInput label="Pseudo" value={username} onChange={setUserName} error="Ce pseudo est déjà pris" maxLength={20} />
-      </section>
+        <TextInput label="pseudo" value={username} onChange={setUserName} placeholder="Ton pseudo" hint="20 caractères maximum" maxLength={20} />      </section>
     </main>
   )
 }

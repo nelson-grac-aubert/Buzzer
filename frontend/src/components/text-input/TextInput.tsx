@@ -1,32 +1,35 @@
 import { useId } from "react";
+import styles from './TextInput.module.css'
 
 type TextInputProps = {
   label: string;
   value: string;
-  onChange: (value: string) => void; 
+  onChange: (value: string) => void;
+  placeholder?: string
   hint?: string
-  error?: string
   maxLength?: number
 }
 
-function TextInput({label, value, onChange, hint, error, maxLength}: TextInputProps) {
+function TextInput({label, value, onChange, placeholder, hint, maxLength}: TextInputProps) {
   const id = useId()
 
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
-      
-      <input 
+    <div className={styles.wrapper}>
+      <label htmlFor={id} className={styles.label}>{label}</label>
+
+      <input
         id = {id}
         type="text"
+        className={styles.field}
         value = {value}
         onChange={(event) => onChange(event.target.value)}
+        placeholder={placeholder}
         maxLength = {maxLength}
       />
 
-      {error ? <p>{error}</p> : hint && <p>{hint}</p>}
+      {hint && <p className={styles.hint}>{hint}</p>}
     </div>
   )
 }
 
-export default TextInput 
+export default TextInput
