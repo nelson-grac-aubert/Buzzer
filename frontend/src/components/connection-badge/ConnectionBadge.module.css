@@ -1,0 +1,32 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8) var(--spacing-12);
+
+  background-color: var(--color-background-panel-dark);
+  font-size: var(--font-size-display-s);
+  line-height: var(--line-height-display);
+  text-transform: uppercase;
+
+  box-shadow: 0 0 0 4px var(--color-outline);
+}
+
+/* px: a pixel art square, not a text size */
+.dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+}
+
+.connected .dot {
+  background-color: var(--color-feedback-success);
+}
+
+.reconnecting .dot {
+  background-color: var(--color-feedback-warning);
+}
+
+.disconnected .dot {
+  background-color: var(--color-feedback-error);
+}
