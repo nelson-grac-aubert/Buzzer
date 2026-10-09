@@ -1,0 +1,73 @@
+/* Mobile first: title and cards stacked at the top.
+   From 48rem: bigger title, cards side by side, everything centered */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  min-height: 100dvh;
+  padding: var(--spacing-24);
+}
+
+/* 48px in the mobile mockup: no Figma text style for it yet */
+.title {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 3rem;
+  line-height: var(--line-height-display);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+/* flex column: the button inside stretches to the full width */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  padding: var(--spacing-16);
+  background-color: var(--color-background-panel);
+  box-shadow: 0 0 0 4px var(--color-outline);
+}
+
+.cardTitle {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: var(--font-size-display-m);
+  line-height: var(--line-height-display);
+  text-transform: uppercase;
+}
+
+.cardText {
+  margin: 0;
+}
+
+@media (min-width: 48rem) {
+  .page {
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-32);
+    padding: var(--spacing-32);
+  }
+
+  .title {
+    font-size: var(--font-size-display-xl);
+  }
+
+  .choices {
+    flex-direction: row;
+    gap: var(--spacing-32);
+    width: 100%;
+    max-width: 60rem;
+  }
+
+  /* both cards share the row width equally */
+  .card {
+    flex: 1;
+    padding: var(--spacing-32);
+  }
+}
