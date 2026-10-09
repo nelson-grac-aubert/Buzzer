@@ -26,13 +26,12 @@
   color: color-mix(in srgb, var(--color-text-primary) 45%, transparent);
 }
 
-/* the accent ring replaces the native focus outline */
+/* the accent ring replaces the native focus outline.
+   No inner top shadow here: it looked like a stray black line inside the orange ring */
 .field:focus {
   outline: none;
   caret-color: var(--color-accent);
-  box-shadow:
-  inset 0 4px 0 0 var(--color-outline),
-  0 0 0 4px var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent);
 }
 
 /* margin: 0 because <p> has default vertical margins, the wrapper gap is enough */
