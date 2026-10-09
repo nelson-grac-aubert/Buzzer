@@ -1,0 +1,72 @@
+/* Mobile first: form in the middle, button stuck at the bottom.
+   From 48rem: one centered block, as in the desktop mockup */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: var(--spacing-24);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-24);
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+/* empty flexible space above the title: with the one of .actions,
+   the free height is split evenly above the form and above the button */
+.content::before {
+  content: '';
+  flex: 1;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: var(--font-size-display-m);
+  line-height: var(--line-height-display);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.intro {
+  margin: 0;
+  text-align: center;
+}
+
+.code {
+  display: flex;
+  justify-content: center;
+}
+
+/* flex column: the button inside stretches to the full width.
+   flex: 1 + flex-end: grows like .content::before, button at the bottom */
+.actions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+@media (min-width: 48rem) {
+  .content {
+    gap: var(--spacing-32);
+  }
+
+  .content::before {
+    display: none;
+  }
+
+  .title {
+    font-size: var(--font-size-display-l);
+  }
+
+  .actions {
+    flex: none;
+  }
+}
