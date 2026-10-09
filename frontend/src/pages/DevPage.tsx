@@ -4,6 +4,7 @@ import CrossIcon from '../components/icons/CrossIcon'
 import AnswerButton from '../components/answer-button/AnswerButton'
 import type { AnswerOption, AnswerState } from '../components/answer-button/AnswerButton'
 import TextInput from '../components/text-input/TextInput'
+import CodeInput from '../components/code-input/CodeInput'
 import { useState } from 'react'
 
 const answerOptions: AnswerOption[] = ['a', 'b', 'c', 'd']
@@ -11,7 +12,8 @@ const answerStates: AnswerState[] = ['default', 'selected', 'validated', 'correc
 
 function DevPage() {
   const [username, setUserName] = useState("")
-  
+  const [code, setCode] = useState('')
+
   return (
     <main>
       <h1>Test des composants</h1>
@@ -43,6 +45,11 @@ function DevPage() {
       <section>
         <h2>TextInput</h2>
         <TextInput label="pseudo" value={username} onChange={setUserName} placeholder="Ton pseudo" hint="20 caractères maximum" maxLength={20} />      </section>
+
+      <section>
+        <h2>CodeInput</h2>
+        <CodeInput label="Code de la partie" value={code} onChange={setCode} hint="5 lettres" />
+      </section>
     </main>
   )
 }
