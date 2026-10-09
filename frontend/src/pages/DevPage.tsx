@@ -6,6 +6,7 @@ import type { AnswerOption, AnswerState } from '../components/answer-button/Answ
 import TextInput from '../components/text-input/TextInput'
 import CodeInput from '../components/code-input/CodeInput'
 import QuizCard from '../components/quiz-card/QuizCard'
+import NumberStepper from '../components/number-stepper/NumberStepper'
 import { useState } from 'react'
 
 const answerOptions: AnswerOption[] = ['a', 'b', 'c', 'd']
@@ -20,6 +21,7 @@ function DevPage() {
   const [username, setUserName] = useState("")
   const [code, setCode] = useState('')
   const [selectedQuizId, setSelectedQuizId] = useState<number | null>(null)
+  const [duration, setDuration] = useState(20)
 
   return (
     <main>
@@ -69,6 +71,11 @@ function DevPage() {
             onClick={() => setSelectedQuizId(quiz.id)}
           />
         ))}
+      </section>
+
+      <section>
+        <h2>NumberStepper</h2>
+        <NumberStepper label="Durée par question" value={duration} onChange={setDuration} min={15} max={60} step={5} unit="s" />
       </section>
     </main>
   )
