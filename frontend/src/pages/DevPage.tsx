@@ -5,14 +5,21 @@ import AnswerButton from '../components/answer-button/AnswerButton'
 import type { AnswerOption, AnswerState } from '../components/answer-button/AnswerButton'
 import TextInput from '../components/text-input/TextInput'
 import CodeInput from '../components/code-input/CodeInput'
+import QuizCard from '../components/quiz-card/QuizCard'
 import { useState } from 'react'
 
 const answerOptions: AnswerOption[] = ['a', 'b', 'c', 'd']
 const answerStates: AnswerState[] = ['default', 'selected', 'validated', 'correct', 'wrong', 'dimmed']
+const quizzes = [
+  { id: 1, title: 'JavaScript : les bases', questionCount: 10 },
+  { id: 2, title: 'Java & Spring', questionCount: 12 },
+  { id: 3, title: 'Algorithmique', questionCount: 1 },
+]
 
 function DevPage() {
   const [username, setUserName] = useState("")
   const [code, setCode] = useState('')
+  const [selectedQuizId, setSelectedQuizId] = useState<number | null>(null)
 
   return (
     <main>
@@ -49,6 +56,19 @@ function DevPage() {
       <section>
         <h2>CodeInput</h2>
         <CodeInput label="Code de la partie" value={code} onChange={setCode} hint="5 lettres" />
+      </section>
+
+      <section>
+        <h2>QuizCard</h2>
+        {quizzes.map((quiz) => (
+          <QuizCard
+            key={quiz.id}
+            title={quiz.title}
+            questionCount={quiz.questionCount}
+            selected={quiz.id === selectedQuizId}
+            onClick={() => setSelectedQuizId(quiz.id)}
+          />
+        ))}
       </section>
     </main>
   )
