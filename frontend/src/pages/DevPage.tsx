@@ -7,6 +7,8 @@ import TextInput from '../components/text-input/TextInput'
 import CodeInput from '../components/code-input/CodeInput'
 import QuizCard from '../components/quiz-card/QuizCard'
 import NumberStepper from '../components/number-stepper/NumberStepper'
+import ConnectionBadge from '../components/connection-badge/ConnectionBadge'
+import PlayerRow from '../components/player-row/PlayerRow'
 import { useState } from 'react'
 
 const answerOptions: AnswerOption[] = ['a', 'b', 'c', 'd']
@@ -76,6 +78,20 @@ function DevPage() {
       <section>
         <h2>NumberStepper</h2>
         <NumberStepper label="Durée par question" value={duration} onChange={setDuration} min={15} max={60} step={5} unit="s" />
+      </section>
+
+      <section>
+        <h2>ConnectionBadge</h2>
+        <ConnectionBadge status="connected" />
+        <ConnectionBadge status="reconnecting" />
+        <ConnectionBadge status="disconnected" />
+      </section>
+
+      <section>
+        <h2>PlayerRow</h2>
+        <PlayerRow name="Nelson" />
+        <PlayerRow name="Amel" connected={false} />
+        <PlayerRow name="Pseudo vraiment très long" />
       </section>
     </main>
   )
