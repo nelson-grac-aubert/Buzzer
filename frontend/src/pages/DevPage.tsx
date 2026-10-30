@@ -9,6 +9,7 @@ import QuizCard from '../components/quiz-card/QuizCard'
 import NumberStepper from '../components/number-stepper/NumberStepper'
 import ConnectionBadge from '../components/connection-badge/ConnectionBadge'
 import PlayerRow from '../components/player-row/PlayerRow'
+import Timer from '../components/timer/Timer'
 import { useState } from 'react'
 
 const answerOptions: AnswerOption[] = ['a', 'b', 'c', 'd']
@@ -24,6 +25,8 @@ function DevPage() {
   const [code, setCode] = useState('')
   const [selectedQuizId, setSelectedQuizId] = useState<number | null>(null)
   const [duration, setDuration] = useState(20)
+  // changing the key remounts the timers, which restarts them
+  const [timerRun, setTimerRun] = useState(0)
 
   return (
     <main>
@@ -92,6 +95,13 @@ function DevPage() {
         <PlayerRow name="Nelson" />
         <PlayerRow name="Amel" connected={false} />
         <PlayerRow name="Pseudo vraiment très long" />
+      </section>
+
+      <section>
+        <h2>Timer</h2>
+        <Timer key={`large-${timerRun}`} durationMs={10000} />
+        <Timer key={`small-${timerRun}`} durationMs={10000} size="small" />
+        <Button variant="secondary" onClick={() => setTimerRun(timerRun + 1)}>Relancer</Button>
       </section>
     </main>
   )
