@@ -3,12 +3,32 @@ import CheckIcon from '../components/icons/CheckIcon'
 import CrossIcon from '../components/icons/CrossIcon'
 import AnswerButton from '../components/answer-button/AnswerButton'
 import type { AnswerOption, AnswerState } from '../components/answer-button/AnswerButton'
+import TextInput from '../components/text-input/TextInput'
+import CodeInput from '../components/code-input/CodeInput'
+import QuizCard from '../components/quiz-card/QuizCard'
+import NumberStepper from '../components/number-stepper/NumberStepper'
+import ConnectionBadge from '../components/connection-badge/ConnectionBadge'
+import PlayerRow from '../components/player-row/PlayerRow'
+import Timer from '../components/timer/Timer'
+import LeaderboardRow from '../components/leaderboard-row/LeaderboardRow'
+import { useState } from 'react'
 
 const answerOptions: AnswerOption[] = ['a', 'b', 'c', 'd']
 const answerStates: AnswerState[] = ['default', 'selected', 'validated', 'correct', 'wrong', 'dimmed']
-const answerLabels: Record<AnswerOption, string> = { a: 'Paris', b: 'Lyon', c: 'Marseille', d: 'Toulouse' }
+const quizzes = [
+  { id: 1, title: 'JavaScript : les bases', questionCount: 10 },
+  { id: 2, title: 'Java & Spring', questionCount: 12 },
+  { id: 3, title: 'Algorithmique', questionCount: 1 },
+]
 
 function DevPage() {
+  const [username, setUserName] = useState("")
+  const [code, setCode] = useState('')
+  const [selectedQuizId, setSelectedQuizId] = useState<number | null>(null)
+  const [duration, setDuration] = useState(20)
+  // changing the key remounts the timers, which restarts them
+  const [timerRun, setTimerRun] = useState(0)
+
   return (
     <main>
       <h1>Test des composants</h1>
@@ -28,23 +48,68 @@ function DevPage() {
 
       <section>
         <h2>AnswerButton</h2>
-        {answerStates.map((state) => (
-          <div key={state}>
-            <h3>{state}</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 342px)', gap: 'var(--spacing-24)', padding: 'var(--spacing-8)' }}>
-              {answerOptions.map((option) => (
-                <AnswerButton
-                  key={option}
-                  option={option}
-                  state={state}
-                  onClick={() => console.log(`clicked answer ${option}`)}
-                >
-                  {answerLabels[option]}
-                </AnswerButton>
-              ))}
-            </div>
-          </div>
+        {answerStates.map((state) =>
+          answerOptions.map((option) => (
+            <AnswerButton key={`${state}-${option}`} option={option} state={state}>
+              {state}
+            </AnswerButton>
+          ))
+        )}
+      </section>
+
+      <section>
+        <h2>TextInput</h2>
+        <TextInput label="pseudo" value={username} onChange={setUserName} placeholder="Ton pseudo" hint="20 caractères maximum" maxLength={20} />      </section>
+
+      <section>
+        <h2>CodeInput</h2>
+        <CodeInput label="Code de la partie" value={code} onChange={setCode} hint="5 lettres" />
+      </section>
+
+      <section>
+        <h2>QuizCard</h2>
+        {quizzes.map((quiz) => (
+          <QuizCard
+            key={quiz.id}
+            title={quiz.title}
+            questionCount={quiz.questionCount}
+            selected={quiz.id === selectedQuizId}
+            onClick={() => setSelectedQuizId(quiz.id)}
+          />
         ))}
+      </section>
+
+      <section>
+        <h2>NumberStepper</h2>
+        <NumberStepper label="Durée par question" value={duration} onChange={setDuration} min={15} max={60} step={5} unit="s" />
+      </section>
+
+      <section>
+        <h2>ConnectionBadge</h2>
+        <ConnectionBadge status="connected" />
+        <ConnectionBadge status="reconnecting" />
+        <ConnectionBadge status="disconnected" />
+      </section>
+
+      <section>
+        <h2>PlayerRow</h2>
+        <PlayerRow name="Nelson" />
+        <PlayerRow name="Amel" connected={false} />
+        <PlayerRow name="Pseudo vraiment très long" />
+      </section>
+
+      <section>
+        <h2>Timer</h2>
+        <Timer key={`large-${timerRun}`} durationMs={10000} />
+        <Timer key={`small-${timerRun}`} durationMs={10000} size="small" />
+        <Button variant="secondary" onClick={() => setTimerRun(timerRun + 1)}>Relancer</Button>
+      </section>
+
+      <section>
+        <h2>LeaderboardRow</h2>
+        <LeaderboardRow rank={1} name="Nelson" score={2450} />
+        <LeaderboardRow rank={2} name="Amel" score={1980} isMe />
+        <LeaderboardRow rank={3} name="Pseudo vraiment très long" score={730} />
       </section>
     </main>
   )

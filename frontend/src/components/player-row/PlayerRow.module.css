@@ -1,0 +1,44 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-12) var(--spacing-16);
+
+  background-color: var(--color-background-panel);
+  line-height: var(--line-height-text);
+
+  box-shadow: 0 0 0 4px var(--color-outline);
+}
+
+/* px: a pixel art square, not a text size */
+.dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-feedback-success);
+}
+
+/* long names are cut with "…" instead of breaking the row */
+.name {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tag {
+  flex: none;
+  color: var(--color-muted-light);
+}
+
+.offline {
+  background-color: var(--color-background-panel-dark);
+}
+
+.offline .dot {
+  background-color: var(--color-muted);
+}
+
+.offline .name {
+  color: color-mix(in srgb, var(--color-text-primary) 50%, transparent);
+}

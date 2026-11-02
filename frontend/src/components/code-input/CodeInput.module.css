@@ -1,0 +1,74 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.label {
+  font-size: var(--font-size-display-s);
+  line-height: var(--line-height-display);
+  text-transform: uppercase;
+}
+
+/* relative: the invisible input is positioned over the cells */
+.cells {
+  position: relative;
+  display: inline-flex;
+  align-self: flex-start;
+  gap: var(--spacing-12);
+}
+
+/* covers all the cells, so clicking anywhere focuses it,
+   but stays invisible: the cells show what is typed */
+.input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+  cursor: text;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 4rem;
+
+  background-color: var(--color-background-panel-dark);
+  font-size: var(--font-size-display-m);
+  line-height: var(--line-height-display);
+
+  box-shadow:
+  inset 0 4px 0 0 var(--color-outline),
+  0 0 0 4px var(--color-outline);
+}
+
+/* next cell to fill, only while the input has the focus.
+   No inner top shadow here: it looked like a stray black line inside the orange ring */
+.cells:focus-within .active {
+  box-shadow: 0 0 0 4px var(--color-accent);
+}
+
+/* fake blinking caret, since the real one is hidden with the input */
+.cells:focus-within .active::after {
+  content: '';
+  width: 4px;
+  height: 1.5rem;
+  background-color: var(--color-accent);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hint {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-text-primary) 60%, transparent);
+}

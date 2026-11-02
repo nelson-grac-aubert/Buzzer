@@ -1,0 +1,51 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  width: 100%;
+  padding: var(--spacing-16);
+  border: none;
+
+  background-color: var(--color-background-panel);
+  text-align: left;
+  line-height: var(--line-height-text);
+  cursor: pointer;
+
+  box-shadow: 0 0 0 4px var(--color-outline);
+}
+
+.selected {
+  background-color: var(--color-background-panel-light);
+  box-shadow: 0 0 0 4px var(--color-text-primary);
+}
+
+/* title and question count, stacked */
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.meta {
+  color: color-mix(in srgb, var(--color-text-primary) 60%, transparent);
+}
+
+/* same square as the AnswerButton indicator, px to stay aligned with the 24px icon */
+.indicator {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.empty {
+  border: var(--border-width) solid var(--color-outline);
+}
+
+.filled {
+  background-color: var(--color-outline);
+  color: var(--color-text-primary);
+}

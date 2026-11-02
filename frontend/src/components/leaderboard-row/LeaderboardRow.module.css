@@ -1,0 +1,47 @@
+/* Rank square, name taking the free space, score on the right */
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-12);
+
+  background-color: var(--color-background-panel);
+  line-height: var(--line-height-text);
+
+  box-shadow: 0 0 0 var(--border-width) var(--color-outline);
+}
+
+/* px: a pixel art block, not a text size */
+.rank {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  background-color: var(--color-outline);
+  color: var(--color-accent);
+  font-size: var(--font-size-display-s);
+  line-height: var(--line-height-display);
+}
+
+/* long names are cut with "…" instead of breaking the row */
+.name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.score {
+  flex: none;
+  font-size: var(--font-size-display-s);
+  line-height: var(--line-height-display);
+}
+
+.me {
+  background-color: var(--color-background-panel-light);
+  box-shadow: 0 0 0 var(--border-width) var(--color-text-primary);
+}

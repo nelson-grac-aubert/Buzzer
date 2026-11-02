@@ -1,0 +1,57 @@
+/* Seconds on top, a 10 segment bar below that empties with time */
+.timer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: var(--line-height-display);
+}
+
+.bar {
+  display: flex;
+}
+
+/* px: pixel art blocks, they do not follow the text size */
+.segment {
+  background-color: var(--color-background-panel-dark);
+}
+
+.filled {
+  background-color: var(--color-accent);
+}
+
+.large {
+  gap: var(--spacing-16);
+  font-size: var(--font-size-display-xl);
+}
+
+.large .bar {
+  gap: 8px;
+}
+
+.large .segment {
+  width: 32px;
+  height: 16px;
+}
+
+.small {
+  gap: var(--spacing-8);
+  font-size: var(--font-size-display-m);
+}
+
+.small .bar {
+  gap: 4px;
+}
+
+.small .segment {
+  width: 12px;
+  height: 8px;
+}
+
+/* the number and the remaining segments turn red */
+.urgent .value {
+  color: var(--color-feedback-error);
+}
+
+.urgent .filled {
+  background-color: var(--color-feedback-error);
+}
