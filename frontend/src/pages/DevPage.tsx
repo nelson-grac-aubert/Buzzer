@@ -10,6 +10,7 @@ import NumberStepper from '../components/number-stepper/NumberStepper'
 import ConnectionBadge from '../components/connection-badge/ConnectionBadge'
 import PlayerRow from '../components/player-row/PlayerRow'
 import Timer from '../components/timer/Timer'
+import LeaderboardRow from '../components/leaderboard-row/LeaderboardRow'
 import { useState } from 'react'
 
 const answerOptions: AnswerOption[] = ['a', 'b', 'c', 'd']
@@ -102,6 +103,13 @@ function DevPage() {
         <Timer key={`large-${timerRun}`} durationMs={10000} />
         <Timer key={`small-${timerRun}`} durationMs={10000} size="small" />
         <Button variant="secondary" onClick={() => setTimerRun(timerRun + 1)}>Relancer</Button>
+      </section>
+
+      <section>
+        <h2>LeaderboardRow</h2>
+        <LeaderboardRow rank={1} name="Nelson" score={2450} />
+        <LeaderboardRow rank={2} name="Amel" score={1980} isMe />
+        <LeaderboardRow rank={3} name="Pseudo vraiment très long" score={730} />
       </section>
     </main>
   )
