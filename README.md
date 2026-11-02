@@ -75,3 +75,25 @@ Back end:
 - **Projection mode**: host screens scaled ×2 for a video projector
 - **Accessibility**: keyboard focus styles and screen reader checks
 
+### c. Targeted user flow
+
+```mermaid
+flowchart TD
+    A["Accueil /<br/>"] -->|Créer une partie<br/>nom + quiz| B
+    A -->|Rejoindre<br/>pseudo + code| G
+    A -.->|Rejoindre en cours<br/>l'instantané mène à l'écran courant| H
+
+    subgraph Animateur ["Animateur — /host/:code"]
+        B["Salle d'attente<br/>code en grand + joueurs en direct"] -->|Lancer la question| C
+        C["Question en cours<br/>décompte + progression des réponses"] -->|Clore, ou fin du temps| D
+        D["Résultats<br/>bonne réponse + classement"] -->|Question suivante| C
+        D -->|Terminer| E["Fin<br/>classement final"]
+    end
+
+    subgraph Joueur ["Joueur — /play/:code"]
+        G["Salle d'attente<br/>en attente de la question"] -->|question lancée| H
+        H["Question<br/>propositions + décompte<br/>répondre une seule fois"] -->|question close| I
+        I["Résultat<br/>juste ou faux + sa place"] -->|question suivante| H
+        I -->|partie terminée| J["Fin<br/>classement final"]
+    end
+```
